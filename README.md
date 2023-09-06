@@ -6,11 +6,6 @@
 ---
 
 ## 0904
-
-* 파이토치 프로그래밍
-
-* 공유에 필요한 정보
-
 * 0904 배운 것
  * import torch1
 from torch1 import Torch
