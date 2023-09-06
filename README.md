@@ -39,3 +39,9 @@ if __name__ == '__main__':
 import time
 def main():
     print('this is test')
+```
+
+* 0906
+* 서포터 백신
+* 결정 트리
+* 로지스틱 회귀와 선형
