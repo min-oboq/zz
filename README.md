@@ -95,3 +95,4 @@ def main():
 * 데이터셋 이미지 출력
 * 데이터셋 예측 결과 이미지 출력
 * AleNet
+* GoogLeNet
