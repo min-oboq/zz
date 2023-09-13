@@ -109,3 +109,10 @@ def main():
 * 장고
 * 보틀
 * FastAPI
+* MVT(Model, View, Template) 모델
+* flask run 명령어 실행하기
+* 디버그 모드
+* Rule에 변수 지정하기
+* 쿠키
+* 세션
+* 응답
