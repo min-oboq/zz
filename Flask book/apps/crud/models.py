@@ -1,9 +1,10 @@
 from datetime import datetime
 
-from apps.app import db
-from werkzeug.security import generate_password_hash
+from apps.app import db, login_manager
+from flask_login import UserMixin
+from werkzeug.security import generate_password_hash, check_password_hash
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     
     __tablename__ = "users"
     
@@ -23,3 +24,13 @@ class User(db.Model):
     @password.setter
     def password(self, passwoed):
         self.password_hash = generate_password_hash(passwoed)
+        
+    def verify_password(self, passwoed):
+        return check_password_hash(self.passwoed_hash, passwoed)
+    
+    def is_duplicate_email(self):
+        return User.query.filter_by(email=self.email).first() is not None
+    
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(user_id)

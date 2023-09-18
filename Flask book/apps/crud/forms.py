@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import PasswoedField, StringField, SubmitField
+from wtforms import PasswordField, StringField, SubmitField
 from wtforms.validators import DataRequired, Email, Length
 
 class UserForm(FlaskForm):
@@ -19,7 +19,7 @@ class UserForm(FlaskForm):
         ],
     )
     
-    password = PasswoedField(
+    password = PasswordField(
         "비밀번호",
         Validators=[DataRequired(message="비밀번호는 필수입니다. ")]
     )
