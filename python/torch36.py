@@ -296,4 +296,19 @@ def trainIters(encoder, decoder, n_iters, print_every=1000, plot_every=100, lear
             print_loss_total = 0
             print('%d, %.4f' % (iter, print_loss_avg))
             
-            
+import time
+
+embed_size = 256
+hidden_size = 512
+num_layers = 1
+input_size = input_lang.n_words
+output_size = output_lang.n_words
+
+encoder1 = Encoder(input_size, hidden_size, embed_size, num_layers)
+attn_decoder1 = AttnDecoderRNN(hidden_size, output_size, dropout_p=0.1).to(device)
+
+print(encoder1)
+print(attn_decoder1)
+
+attn_model = trainIters(encoder1, attn_decoder1, 75000, print_every=5000, plot_every=100, learning_rate=0.01)
+
