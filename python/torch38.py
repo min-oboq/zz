@@ -143,3 +143,46 @@ def train(model, optimizer, criterion=nn.BCELoss(), num_epochs=5, eval_every=len
     
 optimizer = optim.Adam(model.parameters(), lr=2e-5)
 train(model=model, optimizer=optimizer)
+
+train_loss_list, valid_loss_list, global_steps_list = load_metrics('data/metrics.pt')
+
+plt.plot(global_steps_list, train_loss_list, label='Train')
+plt.plot(global_steps_list, valid_loss_list, label='Valid')
+plt.xlabel('Global Steps')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()
+
+def evaluate(mode1, test_loader):
+    y_pred =[]
+    ytrue=[]
+    
+    model. eval()
+    with torch.no_grad():
+        for text, label in test_loader:
+            encoded_list = [tokenizer.encode(t, add_special_tokens=True) for t in text]
+            padded_list = [e + [0] * (512-len(e)) for e in encoded_list]
+            sample = torch.tensor(padded_list)
+            sample, label = sample. to(device), label.to(device)
+            labels = torch.tensor(label)
+            output = model(sample, labels=labels)
+            output = output
+            y_pred.extend(torch. argmax(output, 1). tolist())
+            y_true.extend(labels.tolist())
+            
+            print('Classification 결과:')
+            print(classification_report(y_true, y_pred, labels=[1,0], digits=4))
+            
+            cm = confusion_matrix(y_true, y_pred, labels=[1,0])
+            ax = plt.subplot()
+            sns.heatmap(cm, annot=True, ax=ax, cmap='Blues', fmt='d')
+            ax.set_title('Confusion Matrix')
+            ax.set_xlabel('Predicted Labels' )
+            ax.set_ylabel('True Labels')
+            ax.xaxis.set_ticklabels(['0', '1'])
+            ax.yaxis.set_ticklabels(['0', '1'])
+            
+best_model = model.to(device)
+load_checkpoint('data/model.pt', best_model)
+evaluate(best_model, test_loader)
+
