@@ -178,3 +178,5 @@ def main():
 * 자기 조직화 지도
 * SOM 구조
 * BUM(Best Matching Unit)
+* 인덱싱과 슬라이싱
+* 서로 다른 배열 쌓기
