@@ -180,3 +180,4 @@ def main():
 * BUM(Best Matching Unit)
 * 인덱싱과 슬라이싱
 * 서로 다른 배열 쌓기
+* 작은 배열로 분할
