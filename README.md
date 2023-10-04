@@ -177,4 +177,4 @@ def main():
 * 베이즈 정리
 * 자기 조직화 지도
 * SOM 구조
-* 
+* BUM(Best Matching Unit)
