@@ -203,3 +203,7 @@ def main():
 * 손실 재구성
 * 변형 오토인코더 
 * 적대적 생성 신경망(GAN)
+* GAN 파생기술
+* DCGAN
+* cGAN
+* CycleGAN
